@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pneumonia-api
+spec:
+  replicas: 3  # Number of API instances to run
+  selector:
+    matchLabels:
+      app: pneumonia-api
+  template:
+    metadata:
+      labels:
+        app: pneumonia-api
+    spec:
+      containers:
+      - name: pneumonia-api
+        image: jmalekezadeh/pneumonia-api:latest  # Your Docker Hub image
+        ports:
+        - containerPort: 8000
